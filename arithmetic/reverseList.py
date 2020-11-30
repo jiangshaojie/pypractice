@@ -2,6 +2,7 @@
 import json
 from copy import copy
 
+
 class ListNode:
     def __init__(self, x):
         self.val = x
@@ -30,14 +31,25 @@ class Solution:
         #     # oneNode.next,secondNode.next,oneNode=secondNode.next,oneNode,secondNode.next
         #     oneNode.next,secondNode.next,prev.next,oneNode,secondNode=secondNode.next,oneNode,oneNode,oneNode.next.next,secondNode.next.next
         # return prev
-        #网站写法
-        prev,prev.next=self,head
+        # 网站写法
+        prev, prev.next = self, head
         while prev.next and prev.next.next:
-            a=prev.next
-            b=a.next
-            prev.next,b.next,a.next=b,a,b.next
-            prev=a
+            a = prev.next
+            b = a.next
+            prev.next, b.next, a.next = b, a, b.next
+            prev = a
         return self.next
+
+    def hasCycle(self, head: ListNode):
+        pass
+        slow = fast = head
+        while slow and fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow is fast:
+                return True
+            return False
+
 
 def stringToIntegerList(input):
     print("input: ", input)
@@ -101,7 +113,17 @@ def main1():
     print(out)
 
 
+def main_defcyle():
+    s = "[3,2,0,-4]"
+    pos = 1
+    head = stringToListNode(s);
+
+    # ret = Solution().reverseList(head)
+    ret = Solution().hasCycle(head,pos)
+    # out = listNodeToString(ret);
+    print(ret)
+
+
 if __name__ == '__main__':
-    main1()
-    a=ListNode(1)
-    print(a.next)
+    # main1()
+    main_defcyle()
