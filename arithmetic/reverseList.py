@@ -21,16 +21,23 @@ class Solution:
         return prev
 
     def swapPairs(self, head: ListNode) -> ListNode:
-        prev=ListNode(None)
-        if head is None or head.next is None:
-            return head
-        oneNode,secondNode=head,head.next
-        prev.next=oneNode
-        while oneNode.next:
-            # oneNode.next,secondNode.next,oneNode=secondNode.next,oneNode,secondNode.next
-            oneNode.next,secondNode.next,prev.next,oneNode,secondNode=secondNode.next,oneNode,oneNode,oneNode.next.next,secondNode.next.next
-        return prev
-
+        # prev=ListNode(None)
+        # if head is None or head.next is None:
+        #     return head
+        # oneNode,secondNode=head,head.next
+        # prev.next=oneNode
+        # while oneNode.next:
+        #     # oneNode.next,secondNode.next,oneNode=secondNode.next,oneNode,secondNode.next
+        #     oneNode.next,secondNode.next,prev.next,oneNode,secondNode=secondNode.next,oneNode,oneNode,oneNode.next.next,secondNode.next.next
+        # return prev
+        #网站写法
+        prev,prev.next=self,head
+        while prev.next and prev.next.next:
+            a=prev.next
+            b=a.next
+            prev.next,b.next,a.next=b,a,b.next
+            prev=a
+        return self.next
 
 def stringToIntegerList(input):
     print("input: ", input)
