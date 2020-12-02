@@ -50,6 +50,16 @@ class Solution:
                 return True
             return False
 
+    def has_cycle_set(self, head: ListNode) -> bool:
+        a = set()
+        b = head
+        while b:
+            if a.__contains__(b):
+                return True
+            a.add(b)
+            b = b.next
+        return False
+
 
 def stringToIntegerList(input):
     print("input: ", input)
@@ -119,7 +129,7 @@ def main_defcyle():
     head = stringToListNode(s);
 
     # ret = Solution().reverseList(head)
-    ret = Solution().hasCycle(head,pos)
+    ret = Solution().hasCycle(head, pos)
     # out = listNodeToString(ret);
     print(ret)
 
