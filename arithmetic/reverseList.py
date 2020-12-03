@@ -48,7 +48,7 @@ class Solution:
             fast = fast.next.next
             if slow is fast:
                 return True
-            return False
+        return False
 
     def has_cycle_set(self, head: ListNode) -> bool:
         a = set()
