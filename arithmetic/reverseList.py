@@ -59,6 +59,29 @@ class Solution:
             a.add(b)
             b = b.next
         return False
+    def detectCycle(self,head:ListNode) ->ListNode:
+        a = set()
+        b = head
+        while b:
+            if a.__contains__(b):
+                return b
+            a.add(b)
+            b = b.next
+        return None
+
+    def detectCycle1(self, head: ListNode) -> ListNode:
+        ptr = head
+        slow = fast = head
+        while slow and fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow is fast:
+                while ptr:
+                    if ptr is slow:
+                        return ptr
+                    ptr = ptr.next
+                    slow = slow.next
+        return None
 
 
 def stringToIntegerList(input):
