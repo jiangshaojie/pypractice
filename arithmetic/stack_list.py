@@ -79,5 +79,3 @@ param_3 = obj.peek()
 print(param_3)
 param_4 = obj.empty()
 print(param_4)
-
-
