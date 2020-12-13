@@ -23,25 +23,32 @@ class Solution:
 
     def isAnagram(self, s: str, t: str) -> bool:
         # #https: // leetcode - cn.com / problems / valid - anagram / submissions /
-        return sorted(s)==sorted(t)
-    def isAnagram_map(self,s:str,t:str) -> bool:
-        dic1={}
-        dic2={}
+        return sorted(s) == sorted(t)
+
+    def isAnagram_map(self, s: str, t: str) -> bool:
+        dic1 = {}
+        dic2 = {}
         for item in s:
-            dic1[item]=dic1.get(item,0)+1
+            dic1[item] = dic1.get(item, 0) + 1
         for item in t:
-            dic2[item]=dic2.get(item,0)+1
-        return dic1==dic2
-    def isAnagram_map_1(self,s:str,t:str)->bool:
-        dic1=[0]*26
-        dic2=[0]*26
+            dic2[item] = dic2.get(item, 0) + 1
+        return dic1 == dic2
+
+    def isAnagram_map_1(self, s: str, t: str) -> bool:
+        dic1 = [0] * 26
+        dic2 = [0] * 26
         for item in s:
-            dic1[ord(item)-ord("a")]+=1
+            dic1[ord(item) - ord("a")] += 1
         for item in t:
-            dic2[ord(item)-ord("a")]+=1
-        return dic1==dic2
+            dic2[ord(item) - ord("a")] += 1
+        return dic1 == dic2
 
-
-
-
+    def twoSum(self,nums:List[int],target:int)->list[int]:
+        #https://leetcode-cn.com/problems/two-sum/
+        num_set=set(nums)
+        for item in nums:
+            num_set.remove(item)
+            temp=int-item
+            if num_set.__contains__(temp):
+                return [nums.index(item),nums[temp]]
 
