@@ -47,8 +47,9 @@ class Solution:
         #https://leetcode-cn.com/problems/two-sum/
         num_set=set(nums)
         for item in nums:
-            num_set.remove(item)
-            temp=int-item
+            num_set.discard(item)
+            num_set.pop()
+            temp=target-item
             if num_set.__contains__(temp):
-                return [nums.index(item),nums[temp]]
+                return [nums.index(item),nums.index(temp)]
 
