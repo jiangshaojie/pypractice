@@ -43,13 +43,19 @@ class Solution:
             dic2[ord(item) - ord("a")] += 1
         return dic1 == dic2
 
-    def twoSum(self,nums:List[int],target:int)->list[int]:
-        #https://leetcode-cn.com/problems/two-sum/
-        num_set=set(nums)
-        for item in nums:
-            num_set.discard(item)
-            num_set.pop()
-            temp=target-item
-            if num_set.__contains__(temp):
-                return [nums.index(item),nums.index(temp)]
+    def twoSum(self, nums: List[int], target: int) -> list[int]:
+        # https://leetcode-cn.com/problems/two-sum/
+        n = len(nums)
+        for i in range(n):
+            for j in range(i + 1, n):
+                if nums[i] + nums[j] == target:
+                    return [i, j]
+        return [0]
 
+    def twoSum1(self, nums: List[int], target: int) -> list[int]:
+        map = dict()
+        for index, item in enumerate(nums):
+            if (target - item) in map:
+                return [map.get(target - item), index]
+            map[item] = index
+        return [0]
