@@ -85,6 +85,6 @@ class Solution:
                 third=n
                 if nums[first]+nums[second]+nums[third]>0:
                     pass
-
+                print("666666")
             pass
         return res
