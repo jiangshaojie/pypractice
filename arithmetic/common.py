@@ -60,30 +60,31 @@ class Solution:
             map[item] = index
         return [0]
 
-    def threeSum(self, nums: List[int]) -> List[List[int]]:  #https://leetcode-cn.com/problems/3sum/
-        n=len(nums)
+    def threeSum(self, nums: List[int]) -> List[List[int]]:  # https://leetcode-cn.com/problems/3sum/
+        n = len(nums)
         nums.sort()
-        res=[]
+        res = []
         for i in range(n):
-            for j in range(i+1,n):
-                for k in range(j+1,n):
-                    if nums[i]+nums[j]+nums[k]==0:
-                        temp=[nums[i],nums[j],nums[k]]
+            for j in range(i + 1, n):
+                for k in range(j + 1, n):
+                    if nums[i] + nums[j] + nums[k] == 0:
+                        temp = [nums[i], nums[j], nums[k]]
                         if temp not in res:
                             res.append(temp)
         return res
-    def threeSum1(self, nums: List[int]) -> List[List[int]]:  #https://leetcode-cn.com/problems/3sum/
-        n=len(nums)
+
+    def threeSum1(self, nums: List[int]) -> List[List[int]]:  # https://leetcode-cn.com/problems/3sum/
+        n = len(nums)
         nums.sort()
-        res=[]
+        res = []
         for first in range(n):
-            if first>0 and nums[first]==nums[first-1]:
+            if first > 0 and nums[first] == nums[first - 1]:
                 continue
-            for second in range(first+1,n):
-                if second>0 and nums[second]==nums[second-1]:
+            for second in range(first + 1, n):
+                if second > 0 and nums[second] == nums[second - 1]:
                     continue
-                third=n
-                if nums[first]+nums[second]+nums[third]>0:
+                third = n
+                if nums[first] + nums[second] + nums[third] > 0:
                     pass
                 print("666666")
             pass
