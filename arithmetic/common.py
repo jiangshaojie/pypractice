@@ -60,7 +60,7 @@ class Solution:
             map[item] = index
         return [0]
 
-    def threeSum(self, nums: List[int]) -> List[List[int]]:
+    def threeSum(self, nums: List[int]) -> List[List[int]]:  #https://leetcode-cn.com/problems/3sum/
         n=len(nums)
         nums.sort()
         res=[]
