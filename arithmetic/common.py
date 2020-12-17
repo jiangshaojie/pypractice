@@ -72,3 +72,19 @@ class Solution:
                         if temp not in res:
                             res.append(temp)
         return res
+    def threeSum1(self, nums: List[int]) -> List[List[int]]:  #https://leetcode-cn.com/problems/3sum/
+        n=len(nums)
+        nums.sort()
+        res=[]
+        for first in range(n):
+            if first>0 and nums[first]==nums[first-1]:
+                continue
+            for second in range(first+1,n):
+                if second>0 and nums[second]==nums[second-1]:
+                    continue
+                third=n
+                if nums[first]+nums[second]+nums[third]>0:
+                    pass
+
+            pass
+        return res
