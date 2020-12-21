@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from typing import List
+from arithmetic.util.TreeNode import TreeNode
 
 
 class Solution:
@@ -121,3 +122,12 @@ class Solution:
                     ans.append([nums[first], nums[second], nums[third]])
 
         return ans
+
+    def isValidBST(self, root: TreeNode) -> bool:  #https://leetcode-cn.com/problems/validate-binary-search-tree/submissions/
+        inorder = self.inorder(root)
+        return inorder == list(sorted(set(inorder)))
+
+    def inorder(self, root):
+        if root is None:
+            return []
+        return self.inorder(root.left) + [root.val] + self.inorder(root.right)
