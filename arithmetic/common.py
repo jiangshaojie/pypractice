@@ -153,3 +153,23 @@ class Solution:
         if (min is not None and root.val<=min) or (max is not None and root.val>=max):
             return False
         return self.checkBST(root.left,min,root.val) and self.checkBST(root.right,root.val,max)
+    def isValidBST3(self,root:TreeNode)->bool:
+        """
+        递归写法
+        :param root:
+        :return:
+        """
+        def helper(node,lower=float('-inf'),upper=float('inf')):
+            if not node:
+                return True
+            val=node.val
+            if val<=lower or val>=upper:
+                return False
+            if not helper(node.left,lower,val):
+                return False
+            if not helper(node.right,val,upper):
+                return False
+            return True
+        return helper(root)
+
+
