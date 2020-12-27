@@ -123,7 +123,8 @@ class Solution:
 
         return ans
 
-    def isValidBST(self, root: TreeNode) -> bool:  #https://leetcode-cn.com/problems/validate-binary-search-tree/submissions/
+    def isValidBST(self, root: TreeNode) -> bool:
+        # https://leetcode-cn.com/problems/validate-binary-search-tree/submissions/
         inorder = self.inorder(root)
         return inorder == list(sorted(set(inorder)))
 
@@ -131,3 +132,67 @@ class Solution:
         if root is None:
             return []
         return self.inorder(root.left) + [root.val] + self.inorder(root.right)
+
+    def isValidBST1(self, root: TreeNode) -> bool:
+        self.prev = None
+        return self.helper(root)
+
+    def helper(self, root):
+        if root is None:
+            return True
+        if not self.helper(root.left):
+            return False
+        if self.prev and self.prev.val >= root.val:
+            return False
+        self.prev = root
+        return self.helper(root.right)
+
+    def isValidBST2(self, root: TreeNode) -> bool:
+        return self.checkBST(root, None, None)
+
+    def checkBST(self, root, min, max):
+        if root is None:
+            return True
+        if (min is not None and root.val <= min) or (max is not None and root.val >= max):
+            return False
+        return self.checkBST(root.left, min, root.val) and self.checkBST(root.right, root.val, max)
+
+    def isValidBST3(self, root: TreeNode) -> bool:
+        """
+        递归写法
+        :param root:
+        :return:
+        """
+
+        def helper(node, lower=float('-inf'), upper=float('inf')):
+            if not node:
+                return True
+            val = node.val
+            if val <= lower or val >= upper:
+                return False
+            if not helper(node.left, lower, val):
+                return False
+            if not helper(node.right, val, upper):
+                return False
+            return True
+
+        return helper(root)
+
+    def isValidBST_inorder(self, root: TreeNode) -> bool:
+        """
+        中序遍历
+        :param root:
+        :return:
+        """
+        stack, inorder = [], float("-inf"),
+        while stack or root:
+            while root:
+                stack.append(root)
+                root = root.left
+            root = stack.pop()
+            # 如果中序便利得到的节点的值小于前一个inorder，说明不是二叉搜索树
+            if root.val <= inorder:
+                return False
+            inorder = root.val
+            root = root.right
+        return True
