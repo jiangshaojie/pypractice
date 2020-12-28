@@ -196,3 +196,18 @@ class Solution:
             inorder = root.val
             root = root.right
         return True
+
+    def myPow(self, x, n):
+        """
+        https://leetcode-cn.com/problems/powx-n/
+        :param x:
+        :param n:
+        :return:
+        """
+        if not n:
+            return 1
+        if n < 0:
+            return 1 / self.myPow(x, -n)
+        if n % 2:
+            return x * self.myPow(x, n - 1)
+        return self.myPow(x * x, n / 2)
