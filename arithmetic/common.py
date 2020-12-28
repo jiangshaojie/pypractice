@@ -44,7 +44,7 @@ class Solution:
             dic2[ord(item) - ord("a")] += 1
         return dic1 == dic2
 
-    def twoSum(self, nums: List[int], target: int) -> list[int]:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
         # https://leetcode-cn.com/problems/two-sum/
         n = len(nums)
         for i in range(n):
@@ -53,7 +53,7 @@ class Solution:
                     return [i, j]
         return [0]
 
-    def twoSum1(self, nums: List[int], target: int) -> list[int]:
+    def twoSum1(self, nums: List[int], target: int) -> List[int]:
         map = dict()
         for index, item in enumerate(nums):
             if (target - item) in map:
@@ -211,3 +211,8 @@ class Solution:
         if n % 2:
             return x * self.myPow(x, n - 1)
         return self.myPow(x * x, n / 2)
+
+
+if __name__ == '__main__':
+    solution = Solution()
+    b=solution.myPow(2, 4)
