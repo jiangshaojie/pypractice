@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from typing import List
 from arithmetic.util.TreeNode import TreeNode
+import collections
 
 
 class Solution:
@@ -212,7 +213,40 @@ class Solution:
             return x * self.myPow(x, n - 1)
         return self.myPow(x * x, n / 2)
 
+    def myPow1(self, x, n):
+        """
+
+        :param x:
+        :param n:
+        :return:
+        """
+        if n < 0:
+            x = 1 / x
+            n = -n
+        pows = 1
+        while n:
+            if n & 1:
+                pows *= x
+            x *= x
+            n >>= 1
+        return pows
+
+    def majorityElement(self, nums):
+        """
+        https://leetcode-cn.com/problems/majority-element/ 多数元素
+        majorityElement
+        :return:
+        """
+        counts = collections.Counter(nums)
+        print(counts)
+        return max(counts.keys(),key=counts.get)
+    def majorityElement1(self,nums):
+        nums.sort()
+        return  nums[len(nums)//2]
+
 
 if __name__ == '__main__':
     solution = Solution()
-    b=solution.myPow(2, 4)
+    # b = solution.myPow(2, 4)
+    b = solution.majorityElement1([2, 2, 1, 1, 1, 2, 2])
+    print(b)
