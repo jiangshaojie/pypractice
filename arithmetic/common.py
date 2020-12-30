@@ -264,5 +264,5 @@ class Solution:
 if __name__ == '__main__':
     solution = Solution()
     # b = solution.myPow(2, 4)
-    b = solution.majorityElement1([2, 2, 1, 1, 1, 2, 2])
+    b = solution.majorityElement2([2, 2, 1, 1, 1, 2, 2])
     print(b)
