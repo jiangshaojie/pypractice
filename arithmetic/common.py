@@ -248,13 +248,13 @@ class Solution:
     def majorityElement2(self, nums, lo=0, hi=None):
         def majority_element_rc(lo, hi):
             if lo == hi:
-                return nums[0]
+                return nums[lo]
             mid = (hi - lo) // 2 + lo
             left = majority_element_rc(lo, mid)
             right = majority_element_rc(mid + 1, hi)
             if left == right:
                 return left
-            left_count = sum(1 for i in range(lo, hi + 1) if nums[i] == left)
+            left_count = sum(i for i in range(lo, hi + 1) if nums[i] == left)
             right_count = sum(i for i in range(lo, hi + 1) if nums[i] == right)
             return left if left_count > right_count else right
 
