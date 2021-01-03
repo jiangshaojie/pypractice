@@ -260,18 +260,23 @@ class Solution:
 
         return majority_element_rc(0, len(nums) - 1)
 
-    def levelOrder(self,root):
+    def levelOrder(self, root):
+        """
+        https://leetcode-cn.com/problems/binary-tree-level-order-traversal/
+        :param root:
+        :return:
+        """
         if not root:
             return []
-        result=[]
-        queue=collections.deque
+        result = []
+        queue = collections.deque
         queue.append(root)
-        #visted=set(root)  图的时候会用到
+        # visted=set(root)  图的时候会用到
         while queue:
-            level_size=len(queue)
-            current_level=[]
+            level_size = len(queue)
+            current_level = []
             for _ in range(level_size):
-                node=queue.popleft()
+                node = queue.popleft()
                 current_level.append(node.val)
                 if node.left:
                     queue.append(node.left)
@@ -279,6 +284,7 @@ class Solution:
                     queue.append(node.right)
             result.append(current_level)
         return result
+
 
 if __name__ == '__main__':
     solution = Solution()
