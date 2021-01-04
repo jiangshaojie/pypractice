@@ -285,6 +285,34 @@ class Solution:
             result.append(current_level)
         return result
 
+    def levelOrder1(self, root):
+        """
+        深度遍历递归写法
+        :param root:
+        :return:
+        """
+        if not root:
+            return []
+        self.result = []
+        self._dfs(root, 0)
+        return self.result
+
+    def _dfs(self, node, level):
+        """
+        深度递归辅助函数
+        :param node:
+        :param level:
+        :return:
+        """
+        if not node:
+            return
+        if len(self.result) < level + 1:  # 判断result 长度，如果小于层数加1则新增个list，存放最新层数的值
+            self.result.append([])
+        self.result[level].append(node.val)
+        self._dfs(node.left, level + 1)
+        self._dfs(node.right, level + 1)
+        pass
+
 
 if __name__ == '__main__':
     solution = Solution()
